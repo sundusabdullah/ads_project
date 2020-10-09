@@ -26,8 +26,11 @@ Route::resource('profile', 'App\Http\Controllers\ProfileController')->name('*', 
 Route::resource('famous', 'App\Http\Controllers\FamousController')->name('*', 'famous');
 Route::resource('service', 'App\Http\Controllers\ServiceController')->name('*', 'service');
 
-Route::get('fixed/create', 'App\Http\Controllers\FixedController@create')->name('fixed.create');
-Route::post('fixed/store', 'App\Http\Controllers\FixedController@store')->name('fixed.store');
+Route::get('fixed/{id}/create/', 'App\Http\Controllers\FixedController@create')->name('fixed.create');
+Route::post('fixed/{id}/store', 'App\Http\Controllers\FixedController@store')->name('fixed.store');
+
+
+Route::get('negotiation/{fixed_id}', 'App\Http\Controllers\NegotiationController@show')->name('negotiation.show');
 
 
 //Show user information 

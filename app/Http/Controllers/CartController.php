@@ -18,6 +18,7 @@ class CartController extends Controller
             'name' => $service->services_name,
             'price' => $service->services_price,
             'attributes' => array(),
+            'quantity'=>1,
             'associatedModel' => $service
         ));
 

@@ -30,7 +30,7 @@
                                             <td><a href="{{route('cart.add', $services['id'])}}" class="btn btn-primary"> {{__('شراء الخدمة')}} </a></td>
                                         @endif
                                         @if($services['services_type']	== 'negotiate')
-                                            <td> <a href="{{route('fixed.create')}}" class="btn btn-primary"> {{__('اتمام الطلب')}} </a></td>
+                                            <td> <a href="{{route('fixed.create',$services['id'])}}" class="btn btn-primary"> {{__('اتمام الطلب')}} </a></td>
                                         @endif
                                     </tr>
                                 </tbody>

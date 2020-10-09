@@ -8,7 +8,7 @@
                 <div class="card-header text-right">{{ __('نموذج طلب خدمة') }}</div>
 
                 <div class="card-body">
-                    <form  action="{{ route('fixed.store') }}" method="post" class="form">
+                    <form  action="{{ route('fixed.store',$request->id) }}" method="post" class="form">
                         @csrf
 
                         <div class="form-group row">

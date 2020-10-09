@@ -15,13 +15,13 @@
                         <!-- name -->
                         <div class="col-4">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{__('الإسم')}}</label>
-                            <h3 class="form-control">{{ $famous['name'] }}</h3>
+                            <h3 class="form-control">{{ $user['name'] }}</h3>
                         </div>
 
                          <!-- vat -->
                          <div class="col-4">
                             <label for="vat" class="col-md-4 col-form-label text-md-right">{{__('الرقم الضريبي')}}</label>
-                            <h3 class="form-control">{{ $famous['vat'] }}</h3>
+                            <h3 class="form-control">{{ $user['vat'] }}</h3>
                         </div>
                         
                         <!-- brief -->
