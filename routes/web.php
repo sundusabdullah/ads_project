@@ -30,7 +30,7 @@ Route::get('fixed/{id}/create/', 'App\Http\Controllers\FixedController@create')-
 Route::post('fixed/{id}/store', 'App\Http\Controllers\FixedController@store')->name('fixed.store');
 
 
-Route::get('negotiation/{fixed_id}', 'App\Http\Controllers\NegotiationController@show')->name('negotiation.show');
+
 
 
 //Show user information 
@@ -38,6 +38,10 @@ Route::get('user/info/{id}', 'App\Http\Controllers\FamousController@show')->name
 
 //Show services 
 Route::get('user/services/{id}', 'App\Http\Controllers\ServiceController@show')->name('services.show');
+
+
+Route::get('negotiation/{fixed_id}', 'App\Http\Controllers\NegotiationController@show')->name('negotiation.show')->middleware('auth');
+Route::post('negotiation/{fixed_id}/store', 'App\Http\Controllers\NegotiationController@store')->name('negotiation.store')->middleware('auth');
 
 
 // Cart Routes

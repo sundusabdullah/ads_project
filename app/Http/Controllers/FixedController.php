@@ -59,7 +59,10 @@ class FixedController extends Controller
 
         $Negotiation->fixed_id = $fixed->id;
         $Negotiation->user_id = $sender;
-        $Negotiation->message = 'Test..?';
+        $Negotiation->message = <<< END
+        مرحبًا، 
+        لنتفاوض حول $service->services_name .
+        END;
 
         $Negotiation->save();
 
