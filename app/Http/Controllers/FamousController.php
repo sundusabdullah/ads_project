@@ -76,7 +76,7 @@ class FamousController extends Controller
      */
     public function show($id)
     {
-        $user = Auth::user();
+        $user = User::find($id);
 
         $famous_q = DB::table('famouses')->where('user_id',$id)->first();
         $famous= json_decode( json_encode($famous_q), true);
@@ -95,11 +95,11 @@ class FamousController extends Controller
      */
     public function edit(famous $famous, $id)
     {
-
+        $user = User::find($id);
         $famous_q = DB::table('famouses')->where('user_id',$id)->first();
         $famous= json_decode( json_encode($famous_q), true);
 
-        return view('famous.edit', compact('famous'));
+        return view('famous.edit', compact('famous', 'user'));
     }
 
     /**
@@ -125,7 +125,6 @@ class FamousController extends Controller
             'twitter_num' => $request->input('twitter_num'),
             'region' => $request->input('region'),
             'vat' => $request->input('vat'),
-
             ]);
 
         // if($request->hasfile('avatar')){
@@ -141,8 +140,7 @@ class FamousController extends Controller
         //     // $oldFilename = $user->avatar;
         //     // File::delete(public_path('/uploads/avatars/'.$oldFilename));
         // }
-     
-    
+        
         return back();
     }
 

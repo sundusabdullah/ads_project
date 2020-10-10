@@ -1,6 +1,8 @@
 @extends('layouts.app')
-
 @section('content')
+
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -10,7 +12,7 @@
                         @if($user->account_type == 'famous' or $user->account_type == 'orgonizer')
                             <div class="col-4">
                                 <a href="{{ route('info', $user) }}" class="btn btn-primary"> {{ $user->name }} </a>
-                            </div>
+                            </div>   
                         @endif
                 @endforeach
                 

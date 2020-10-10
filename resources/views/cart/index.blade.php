@@ -2,6 +2,7 @@
 @section('content')
 
     <h2 class="text-right text-center pb-2">الشراء</h2>
+
     <table class="table table-bordered text-right" >
         <thead>
             <tr>
@@ -15,6 +16,7 @@
                 <tr >
                     <td scop="row">{{ $cartItem->name }}</td>
                     <td scop="row">{{ $cartItem->price }}</td>
+                    
                     <td scop="row">
                         <a href="{{ route('cart.destroy', $cartItem->id) }}">حذف</a>
                     </td>
@@ -29,6 +31,7 @@
         {{ $total }} ريال
         </h3>
     <div class="pl-4" >
-        <a class="btn btn-primary" role="button" href="#">متابعة للدفع</a>
+            <!-- Show bill -->
+        <a class="btn btn-primary" role="button" href="{{ route('order.index') }}">عرض الفاتورة</a>
     </div>
 @endsection
