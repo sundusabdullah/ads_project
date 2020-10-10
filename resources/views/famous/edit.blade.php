@@ -15,12 +15,12 @@
                     <div class="row">
                         <div class="col-4">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{__('الإسم')}}</label>
-                            <input name="name" class="form-control" value="{{-- $famous['name'] --}}" required>
+                            <input name="name" class="form-control" value="{{ $user['name'] }}" required>
                         </div>
 
                         <div class="col-4">
                             <label for="vat" class="col-md-4 col-form-label text-md-right">{{__('الرقم الضريبي')}}</label>
-                            <input name="vat" class="form-control" value="{{-- $famous['vat'] --}}" required>
+                            <input name="vat" class="form-control" value="{{ $user['vat'] }}" required>
                         </div>
 
                         <div class="col-4">

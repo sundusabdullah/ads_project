@@ -76,7 +76,7 @@ class FamousController extends Controller
      */
     public function show($id)
     {
-        $user = Auth::user();
+        $user = \App\Models\User::find($id);
 
         $famous_q = DB::table('famouses')->where('user_id',$id)->first();
         $famous= json_decode( json_encode($famous_q), true);
@@ -95,11 +95,11 @@ class FamousController extends Controller
      */
     public function edit(famous $famous, $id)
     {
-
+        $user = \App\Models\User::find($id);
         $famous_q = DB::table('famouses')->where('user_id',$id)->first();
         $famous= json_decode( json_encode($famous_q), true);
 
-        return view('famous.edit', compact('famous'));
+        return view('famous.edit', compact('famous','user'));
     }
 
     /**
