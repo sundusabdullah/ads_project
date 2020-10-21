@@ -77,7 +77,6 @@ class FamousController extends Controller
     public function show($id)
     {
         $user = \App\Models\User::find($id);
-
         $famous_q = DB::table('famouses')->where('user_id',$id)->first();
         $famous= json_decode( json_encode($famous_q), true);
 
@@ -99,7 +98,7 @@ class FamousController extends Controller
         $famous_q = DB::table('famouses')->where('user_id',$id)->first();
         $famous= json_decode( json_encode($famous_q), true);
 
-        return view('famous.edit', compact('famous','user'));
+        return view('famous.edit', compact('famous', 'user'));
     }
 
     /**
@@ -113,7 +112,17 @@ class FamousController extends Controller
     {
 
         $user = Auth::user();
-
+        if(Auth::user()->id == $id){
+            if($request->hasfile('avatar')){
+                $avatar = $request->file('avatar');
+                $filename = time() . '.' . $avatar->getClientOriginalExtension();
+                Image::make($avatar)->resize(300, 300)->save( public_path('/uploads/avatars/' . $filename));
+                $avatarPath = '/uploads/avatars/' . $filename;
+                $user->avatar = $avatarPath;
+                $user->save();
+            }
+        }
+    
         $famous = DB::table('famouses')->where('user_id',$id)->update(
             ['name' => $request->input('name'),
             'brief' => $request->input('brief'),
@@ -125,24 +134,8 @@ class FamousController extends Controller
             'twitter_num' => $request->input('twitter_num'),
             'region' => $request->input('region'),
             'vat' => $request->input('vat'),
-
             ]);
 
-        // if($request->hasfile('avatar')){
-        //     $avatar = $request->file('avatar');
-        //     $filename = time() . '.' . $avatar->getClientOriginalExtension();
-        //     Image::make($avatar)->resize(300, 300)->save( public_path('/uploads/avatars/' . $filename));
-        //     $avatarPath = '/uploads/avatars/' . $filename;
-
-        //     $user->avatar = $avatarPath;
-        //     $user->save();
-            
-        //     // //Delete old image from folder 
-        //     // $oldFilename = $user->avatar;
-        //     // File::delete(public_path('/uploads/avatars/'.$oldFilename));
-        // }
-     
-    
         return back();
     }
 

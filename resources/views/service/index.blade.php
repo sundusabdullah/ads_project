@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@section('title', 'عرض الخدمات')
 
                 <form action="" method="post" class="form">
                         @csrf
@@ -30,23 +31,24 @@
                                             <td><a href="{{route('cart.add', $services['id'])}}" class="btn btn-primary"> {{__('شراء الخدمة')}} </a></td>
                                         @endif
                                         @if($services['services_type']	== 'negotiate')
+
                                             <td> <a href="{{route('fixed.create',$services['id'])}}" class="btn btn-primary"> {{__('اتمام الطلب')}} </a></td>
+
                                         @endif
+                                        @if(auth()->user()->id == $services['user_id'])
+                                            <td><a href="{{route('service.edit', $services['id'])}}" class="btn btn-primary"> {{__('تحديث')}} </a>
+                                                <from method="post" action= "{{route('service.destroy', $services['id'])}}">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button class="btn btn-danger" onclick="return confirm('{{__('هل أنت متأكد؟')}}')">حذف</button>
+                                                </from>
+                                            </td>
+
+                                        @endif
+
                                     </tr>
                                 </tbody>
                                 @endforeach
-                            </table>
-
-                            @if(auth()->user()->id == $services['user_id'])
-                                <div class="col-4">
-                                    <a href="{{route('service.edit', $services)}}" class="btn btn-primary"> {{__('تحديث')}} </a>
-                                </div>
-                                <from method="post" action= "{{route('service.destroy', $services)}}">
-                                    @method('DELETE')
-                                    @csrf
-                                        <button class="btn btn-danger" onclick="return confirm('{{__('هل أنت متأكد؟')}}')">حذف</button>
-                                </from>
-                            @endif
+                            </table>   
                 </form>
- 
 @endsection

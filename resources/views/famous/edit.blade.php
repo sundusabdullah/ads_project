@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@section('title', 'تعديل الملف الشخصي')
 
 <div class="row "> 
     <div class="col-12">
@@ -11,16 +12,23 @@
                         @csrf
                         @method('PATCH')
 
+                       <!-- avatar -->
+                       <div class="form-group row">
+                            <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('الصورة الشخصية') }}</label>
+                            <div class="col-md-6">
+                                <input id="avatar" type="file" class="form-control" value="{{ $user['avatar'] }}" name="avatar">
+                            </div>
+                        </div>
 
                     <div class="row">
                         <div class="col-4">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{__('الإسم')}}</label>
-                            <input name="name" class="form-control" value="{{ $user['name'] }}" required>
+                            <input name="name" class="form-control" value="{{ $famous['name'] }}" required>
                         </div>
 
                         <div class="col-4">
                             <label for="vat" class="col-md-4 col-form-label text-md-right">{{__('الرقم الضريبي')}}</label>
-                            <input name="vat" class="form-control" value="{{ $user['vat'] }}" required>
+                            <input name="vat" class="form-control" value="{{ $famous['vat'] }}" required>
                         </div>
 
                         <div class="col-4">

@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Auth\Events\Registered;
+
 
 
 class RegisterController extends Controller
@@ -32,8 +34,23 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = '/home';
 
+    public function register(Request $request)
+    {      
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        return redirect($this->redirectPath())->with('', '');
+    }
+    // protected function redirectTo()
+    // {
+    //     if (auth()->user()->status == 0) {
+    //         return '/login';
+    //     }
+    //     // return '/home';
+    // }
     /**
      * Create a new controller instance.
      *
@@ -56,7 +73,7 @@ class RegisterController extends Controller
 
         return Validator::make($data, [
             
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'account_type' => ['required'],
@@ -85,7 +102,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'account_type'=> $data['account_type'],
             'avatar' => $avatarPath??null,
-            
         ]);
     }
+
 }

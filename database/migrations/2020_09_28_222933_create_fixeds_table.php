@@ -28,6 +28,7 @@ class CreateFixedsTable extends Migration
             	->references('id')
             	->on('services');
             $table->string('place');
+            $table->string('price');
             $table->time('time');
             $table->date('date');
             $table->string('notes')->nullable();

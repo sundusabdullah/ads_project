@@ -50,4 +50,22 @@ class NegotiationController extends Controller
         return redirect()->back();
     }
 
+
+    // public function edit(Negotiation $negotiation)
+    // {
+    //     return view('order.edit');
+    // }
+
+    // /**
+    //  * Update the specified resource in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @param  \App\Models\Order  $order
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function update(Request $request, Negotiation $negotiation)
+    // {
+    //     //
+    // }
+
 }

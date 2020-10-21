@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Fixed;
 use App\Models\Negotiation;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,7 +30,6 @@ class FixedController extends Controller
     public function create(Request $request)
     {
         return view('order.fixed',compact('request'));
-
     }
 
     /**
@@ -49,6 +49,7 @@ class FixedController extends Controller
         $fixed->sender = $sender;
         $fixed->receiver = $service->user_id;
         $fixed->place = $request->place;
+        $fixed->price = $request->price;
         $fixed->date = $request->date;
         $fixed->time = $request->time;
         $fixed->notes = $request->notes;
@@ -66,7 +67,7 @@ class FixedController extends Controller
 
         $Negotiation->save();
 
-        return redirect()->back();
+        return redirect()->route('negotiation.show',['fixed_id'=>$fixed->id]);
     
     }
 
@@ -76,9 +77,9 @@ class FixedController extends Controller
      * @param  \App\Models\Fixed  $fixed
      * @return \Illuminate\Http\Response
      */
-    public function show(Fixed $fixed)
+    public function show(Fixed $fixed, Request $request, $id)
     {
-        //
+        // 
     }
 
     /**
@@ -87,9 +88,12 @@ class FixedController extends Controller
      * @param  \App\Models\Fixed  $fixed
      * @return \Illuminate\Http\Response
      */
-    public function edit(Fixed $fixed)
+    public function edit(Fixed $fixed, $id)
     {
-        //
+        $fixed_q = DB::table('fixeds')->where('id',$id)->first();
+        $fixed= json_decode( json_encode($fixed_q), true);
+        // dd($fixed);
+        return view('order.edit', compact('fixed'));
     }
 
     /**
@@ -99,9 +103,24 @@ class FixedController extends Controller
      * @param  \App\Models\Fixed  $fixed
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fixed $fixed)
+    public function update(Fixed $fixed, Request $request, $id)
     {
-        //
+
+        $fixed_q = DB::table('fixeds')->where('id',$id)->get();
+        $fixed= json_decode( json_encode($fixed_q), true);
+        // dd($fixed);
+
+        $fixed = DB::table('fixeds')->where('id',$id)->update(
+            [
+                'place' => $request->input('place'),
+                'price' => $request->input('price'),
+                'date' => $request->input('date'),
+                'time' => $request->input('time'),
+                'notes' => $request->input('notes'),
+            ]);
+       
+
+        return back();
     }
 
     /**

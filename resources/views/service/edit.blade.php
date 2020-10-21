@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@section('title', 'تعديل خدمة')
 
 <div class="row "> 
     <div class="col-12">

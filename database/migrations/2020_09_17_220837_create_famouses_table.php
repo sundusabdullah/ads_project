@@ -20,9 +20,8 @@ class CreateFamousesTable extends Migration
             ->references('id')
             ->on('users')
             ->onDelete('cascade');
-            $table->string('avatar')->nullable();
-            $table->bigInteger('vat')->nullable();
-            $table->string('name');
+            $table->bigInteger('vat')->unique();
+            $table->string('name')->unique();
             $table->string('brief');
             $table->string('instagram');
             $table->bigInteger('instagram_num');

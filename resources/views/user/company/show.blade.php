@@ -1,6 +1,7 @@
 @extends('layouts.app')
-
 @section('content')
+@section('title', 'الملف الشخصي')
+
 
 <div class="row "> 
     <div class="col-12">
@@ -21,10 +22,7 @@
                             <h3 class="form-control">{{ $user->email }}</h3>
                         </div>
 
-                        <div class="col-4">
-                            <label for="vat">{{__('الرقم الضريبي')}}</label>
-                            <h3 class="form-control">{{ $user->vat }}</h3>
-                        </div>
+        
 
                         <div class="col-4">
                             <a href="{{route('profile.edit', $user)}}" class="btn btn-primary"> {{__('تحديث')}} </a>

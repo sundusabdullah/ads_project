@@ -1,6 +1,7 @@
 @extends('layouts.app')
-
 @section('content')
+@section('title', 'طلب خدمة')
+
 <div class="container" dir="rtl">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -15,6 +16,14 @@
                             <label for="place" class="col-md-4 col-form-label text-md-right">{{ __('مكان الإعلان') }}</label>
                             <div class="col-md-6">
                                 <input id="place" type="text" class="form-control" name="place" required >
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('المبلغ المقترح') }}</label>
+                            <div class="col-md-6">
+                                <input id="price" type="text" class="form-control" name="price" required >
                             </div>
                         </div>
 

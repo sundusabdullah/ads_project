@@ -11,7 +11,7 @@ class Fixed extends Model
 
     protected $table = 'fixeds';
     protected $fillable = [
-        'place', 'time', 'date', 'notes',
+        'place', 'time', 'date', 'notes', 'price'
     ];
 
     public function services(){

@@ -1,6 +1,7 @@
 @extends('layouts.app')
-
 @section('content')
+@section('title', 'تعديل الملف الشخصي')
+
 
 <div class="row "> 
     <div class="col-12">
@@ -22,10 +23,7 @@
                             <input name="email" class="form-control" value="{{ $user->email }}" required>
                         </div>
 
-                        <div class="col-4">
-                            <label for="vat">{{__('الرقم الضريبي')}}</label>
-                            <input name="vat" class="form-control" value="{{ $user->vat }}">
-                        </div>
+                      
 
                         <div class="col-4">
                             <button type="submit" class="btn btn-success">{{__('حفظ')}}</button>
