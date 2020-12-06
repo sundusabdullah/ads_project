@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Famous;
+use App\Models\Statistics;
 use App\Models\User;
 
 class HomeController extends Controller
@@ -30,7 +31,10 @@ class HomeController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('home',compact('users'));
+        $statistics = Statistics::all();
+        $famous = Famous::all();
+
+        return view('home',compact('users', 'statistics', 'famous'));
 
     }
 

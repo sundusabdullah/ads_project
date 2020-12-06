@@ -51,4 +51,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Fixed');
     }
 
+    public function statistics(){
+        return $this->hasMany('App\Models\Statistics');
+    }
+
 }

@@ -13,16 +13,29 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     public function add(Service $service){
-        // dd($service->user_id);
-        Cart::session(auth()->id())->add(array(
-            'id' => $service->id,
-            'name' => $service->services_name,
-            'price' => $service->services_price,
-            'attributes' => array(),
-            'quantity'=>1,
-            'associatedModel' => $service
-        ));
-        return redirect()->route('cart.index'); 
+        // dd($service);
+        if($service->services_instagram_price != null){
+            Cart::session(auth()->id())->add(array(
+                'id' => $service->id,
+                'name' => $service->services_instagram_name,
+                'price' => $service->services_instagram_price,
+                'attributes' => array(),
+                'quantity'=>1,
+                'associatedModel' => $service
+            ));
+            return redirect()->route('cart.index'); 
+
+        }elseif($service->services_snapchat_price != null){
+            Cart::session(auth()->id())->add(array(
+                'id' => $service->id,
+                'name' => $service->services_snapchat_name,
+                'price' => $service->services_snapchat_price,
+                'attributes' => array(),
+                'quantity'=>1,
+                'associatedModel' => $service
+            ));
+            return redirect()->route('cart.index'); 
+        }else{}
     }
 
     public function index(){

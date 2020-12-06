@@ -40,6 +40,7 @@ class FixedController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $fixed = new Fixed;
 
         $sender = Auth::user()->id;
@@ -48,6 +49,7 @@ class FixedController extends Controller
         $fixed->services_id = $service->id;
         $fixed->sender = $sender;
         $fixed->receiver = $service->user_id;
+        $fixed->service_name = $request->service_name;
         $fixed->place = $request->place;
         $fixed->price = $request->price;
         $fixed->date = $request->date;
@@ -62,7 +64,7 @@ class FixedController extends Controller
         $Negotiation->user_id = $sender;
         $Negotiation->message = <<< END
         مرحبًا، 
-        لنتفاوض حول $service->services_name .
+        لنتفاوض حول الخدمة المطلوبة .
         END;
 
         $Negotiation->save();
@@ -112,6 +114,7 @@ class FixedController extends Controller
 
         $fixed = DB::table('fixeds')->where('id',$id)->update(
             [
+                'service_name' => $request->input('service_name'),
                 'place' => $request->input('place'),
                 'price' => $request->input('price'),
                 'date' => $request->input('date'),
@@ -119,7 +122,6 @@ class FixedController extends Controller
                 'notes' => $request->input('notes'),
             ]);
        
-
         return back();
     }
 

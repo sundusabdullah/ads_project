@@ -20,20 +20,23 @@ class CreateFamousesTable extends Migration
             ->references('id')
             ->on('users')
             ->onDelete('cascade');
-            $table->bigInteger('vat')->unique();
-            $table->string('name')->unique();
-            $table->string('brief');
-            $table->string('instagram');
-            $table->bigInteger('instagram_num');
-            $table->string('snap');
-            $table->bigInteger('snap_num');
-            $table->string('twitter');
-            $table->bigInteger('twitter_num');
-            $table->string('region')->nullable();
+            $table->bigInteger('vat')->unique();//الضريبة
+            $table->string('name')->unique();//الإسم
+            $table->string('brief');//نبذه
+            $table->string('email')->nullable();//الإيميل
+            $table->string('region')->nullable();//المناطق الاكثر انتشار
+            $table->string('interests')->nullable();//الإهتمامات
+            $table->string('nationality')->nullable();//الجنسية
+            $table->string('male_follow')->nullable();//المتابعين الذكور
+            $table->string('female_follow')->nullable();//المتابعين الإناث
+            $table->string('ins_link')->nullable();//رابط انستقرام
+            $table->string('snap_link')->nullable();//رابط سناب
+            $table->string('youtube_link')->nullable();//رابط يوتيوب
+            $table->string('twitter_link')->nullable();//رابط تويتر
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *

@@ -44,6 +44,7 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $user= Auth::user();
         $user->service()->create($request->all());
         return back();

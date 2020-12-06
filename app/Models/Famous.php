@@ -11,8 +11,8 @@ class Famous extends Model
     use HasFactory;
 
     protected $table = 'famouses';
-    protected $fillable = ['user_id', 'avatar', 'name', 'vat', 'brief', 'instagram', 'instagram_num', 'snap',
-     'snap_num', 'twitter', 'twitter_num', 'region'];
+    protected $fillable = ['vat', 'name', 'brief', 'email', 'region', 'interests', 'nationality', 'male_follow',
+    'female_follow', 'ins_link', 'snap_link', 'youtube_link', 'twitter_link'];
 
     public function user(){
         return $this->belongsTo('App\Models\User');

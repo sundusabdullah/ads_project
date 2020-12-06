@@ -26,7 +26,8 @@ class CreateFixedsTable extends Migration
 		    $table->unsignedBigInteger('services_id');
             	$table->foreign('services_id')
             	->references('id')
-            	->on('services');
+                ->on('services');
+            $table->string('service_name');
             $table->string('place');
             $table->string('price');
             $table->time('time');

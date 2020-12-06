@@ -15,16 +15,23 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
+
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
             ->references('id')
             ->on('users');
-            $table->string('services_name');
-            $table->string('services_price')->nullable();
-            $table->string('services_type');
+            
+            //instagram
+            $table->string('services_instagram_name')->nullable();
+            $table->string('services_instagram_price')->nullable();
+    
+            //snapchat
+            $table->string('services_snapchat_name')->nullable();
+            $table->string('services_snapchat_price')->nullable();
+
             $table->timestamps();
         });
-    }
+    } 
     /**
      * Reverse the migrations.
      *

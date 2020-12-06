@@ -2,112 +2,93 @@
 @section('content')
 @section('title', 'التفاوض على الخدمة')
 
-<div class="container" dir="rtl">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header text-right">{{ __('معلومات طلب خدمة') }}</div>
-
-                <div class="card-body">
-
-                    <div class="form-group row">
-                        <label for="place" class="col-md-4 col-form-label text-md-right">{{ __('اسم الخدمة') }}</label>
-                        <div class="col-md-6">
-                            <input disabled value="{{ $fixed->services->services_name }}" id="services_name" type="text" class="form-control" name="services_name" required >
+<body>
+  
+    <nav class="navbar navbar-light navbar-expand" id="brandNav">
+        <div class="container"><a class="navbar-brand mx-auto" id="brand" href="{{route('home')}}" style="font-size: 36px;font-weight: bold;color: rgb(56,212,242);">اوزون</a><button class="navbar-toggler navbar-toggler-right text-white rounded" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button></div>
+    </nav>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#"><span class="text-white">الرئيسية</span></a></li>
+        <li class="breadcrumb-item"><a href="#"><span class="text-white">اسم</span></a></li>
+    </ol>
+    <div class="row d-flex flex-wrap">
+        <div class="col">
+            <div id="wrapper" class="pr-2 pl-2">
+                <div class="d-flex flex-column" id="content-wrapper">
+                    <div id="content">
+                        <div class="container-fluid mb-5">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card shadow mb-4" style="text-align: right;">
+                                        <div class="card-header py-3">
+                                            <h5 class="m-0 font-weight-bold">نموذج طلب خدمة</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="form-group" style="margin-top: 15px;margin-right: 50px;margin-left: 50px;">
+                                                <div><label for="snapnum"><strong>اسم الخدمة</strong></label>
+                                                    <div style="padding-bottom: 22px;">
+                                                        <input name="service_name" disabled value="{{ $fixed->service_name }}" type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div><label for="snapnum"><strong>مكان الاعلان</strong></label>
+                                                    <div style="padding-bottom: 22px;"><input  name="place" disabled value="{{ $fixed->place }}" type="text" class="form-control"></div>
+                                                </div>
+                                                <div style="padding-bottom: 22px;"><label for="snapnum"><strong>المبلغ المقترح</strong></label>
+                                                    <div style="padding-bottom: 12px;"><input type="text" name="price" disabled value="{{ $fixed->price }}" class="form-control"></div>
+                                                </div>
+                                                <div style="padding-bottom: 22px;"><label for="snapnum"><strong>تاريخ الاعلان</strong></label>
+                                                    <div style="padding-bottom: 12px;"><input type="date" name="date" disabled value="{{ $fixed->date }}" class="form-control"></div>
+                                                </div>
+                                                <div style="padding-bottom: 22px;"><label for="snapnum"><strong>الوقت</strong><br></label>
+                                                    <div style="padding-bottom: 12px;"><input type="time" name="time" disabled value="{{ $fixed->time }}" class="form-control"></div>
+                                                </div><label for="snapnum"><strong>ملاحظات اخرى</strong><br></label><textarea name="notes" disabled>{{ $fixed->notes }}</textarea>
+                                                <div class="row">
+                                                    <div class="col d-lg-flex d-xl-flex justify-content-lg-end">
+                                                        <a href="{{ route('fixed.edit', $fixed['id'])}}" class="btn btn-sm btnprofil ml-2" type="submit">تعديل الطلب</a>
+                                                        <a href="{{ route('paypal.show', $fixed)}}" class="btn btn-sm btnprofil" type="submit">متابعة لدفع</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card shadow mb-4" style="text-align: right;">
+                                        <div class="card-header py-3">
+                                            <h5 class="m-0 font-weight-bold">نقاش الخدمة</h5>
+                                        </div>
+                                        @foreach ($negotiations as $negotiation)
+                                            <h5 class="font-weight-bold mt-0 mb-3">{{ $negotiation->user->name }}</h5>
+                                            {{ $negotiation->message }}
+            
+                                            <br/>
+                                            <span class="font-italic float-left">{{ $negotiation->created_at }}</span>
+                                        @endforeach 
+                                        <form  action="{{ route('negotiation.store',$fixed->id) }}" method="post" class="form">
+                                            @csrf
+                                            <input type="hidden" value="{{ $user_id }}" name="user_id"/>
+                                        <div class="card-body">
+                                            <div class="form-group" style="margin-top: 15px;margin-right: 50px;margin-left: 50px;">
+                                                <textarea name="message"></textarea>
+                                                <div class="row">
+                                                    <div class="col d-lg-flex d-xl-flex justify-content-lg-end">
+                                                        <input type="hidden" value="{{ $user_id }}" name="user_id" />
+                                                        <input type="hidden" value="{{ $to }}" name="to"/>
+                                                        <button value="{{$fixed->id}}" name="fixed_id"  class="btn btn-sm btnprofil" type="submit">ارسل</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="form-group row">
-                            <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('السعر المقترح') }}</label>
-                            <div class="col-md-6">
-                                <input disabled value="{{ $fixed->price }}" id="price" type="text" class="form-control" name="price" required >
-                            </div>
-                        </div>
-				    </div>
-                <div class="card-body">
-
-                        <div class="form-group row">
-                            <label for="place" class="col-md-4 col-form-label text-md-right">{{ __('مكان الإعلان') }}</label>
-                            <div class="col-md-6">
-                                <input disabled value="{{ $fixed->place }}" id="place" type="text" class="form-control" name="place" required >
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="date" class="col-md-4 col-form-label text-md-right">{{ __('تاريخ الإعلان') }}</label>
-
-                            <div class="col-md-6">
-                                <input disabled value="{{ $fixed->date }}" id="date" type="date" class="form-control" name="date"  required>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="time" class="col-md-4 col-form-label text-md-right">{{ __('الوقت') }}</label>
-                            <div class="col-md-6">
-                                <input disabled value="{{ $fixed->time }}" id="time" type="time" class="form-control" name="time" required >
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="notes" class="col-md-4 col-form-label text-md-right">{{ __('ملاحظات آخرى') }}</label>
-                            <div class="col-md-6">
-                                <textarea disabled id="notes" type="text" class="form-control" name="notes">{{ $fixed->notes }}</textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <a href="{{ route('fixed.edit', $fixed['id'])}}" class="btn btn-primary"> {{__('تعديل الطلب')}} </a>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <!-- Checkout form-->
-                                <a href="" class="btn btn-primary"> {{__('متابعة للدفع')}} </a>
-                            </div>
-                        </div>
                 </div>
-			</div>
-			
-			<div class="card mt-4" style="direction: rtl">
-				<div class="card-header text-right">{{ __('نقاش الخدمة') }}</div>
-					<div class="card-body" style="direction: rtl">
-						<ul class="list-unstyled" style="direction: rtl;padding-right: 0;">
-							@foreach ($negotiations as $negotiation)
-							<li class="media text-right p-2 mb-2" style="background: #f7f7f7">
-							  <div class="media-body">
-								<h5 class="font-weight-bold mt-0 mb-3">{{ $negotiation->user->name }}</h5>
-								{{ $negotiation->message }}
-
-								<br/>
-								<span class="font-italic float-left">{{ $negotiation->created_at }}</span>
-
-								</div>
-							</li>
-  
-							@endforeach 
-						</ul>
-						<form  action="{{ route('negotiation.store',$fixed->id) }}" method="post" class="form">
-							@csrf
-							
-							<div class="form-group row">
-								<div class="col-md-12">
-									<textarea type="text" class="form-control" name="message"></textarea>
-								</div>
-							</div>
-	
-	
-							<div class="form-group row">
-								<div class="col-md-12 text-right">
-									<input type="hidden" value="{{ $user_id }}" name="user_id" />
-								    <input type="hidden" value="{{ $to }}" name="to"/>
-									<button value="{{$fixed->id}}" name="fixed_id" type="submit" class="btn btn-primary">{{__('إرسال')}}</button>
-								</div> 
-							</div>
-						</form>
-                	</div>
-			</div>
+            </div>
         </div>
     </div>
-</div>
+@endsection
+@section('footer')
+    @include('footer')
 @endsection

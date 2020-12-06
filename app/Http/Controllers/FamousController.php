@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Famous;
+use App\Models\Statistics;
+use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -31,6 +33,10 @@ class FamousController extends Controller
             $id = Auth::user()->id;
             $user = Auth::user();
             $famous=Famous::where('user_id',$id)->with('user')->first();
+            $statistics=Statistics::where('user_id',$id)->with('user')->first();
+            $services=Service::where('user_id',$id)->with('user')->get();
+            $services_2=Service::where('user_id',$id)->with('user')->get();
+
 
             if(null == $famous and Auth()->user()->account_type == 'person' or 
             Auth()->user()->account_type == 'company'){
@@ -41,7 +47,7 @@ class FamousController extends Controller
                 return view('famous.create');
             }
         }
-        return view('famous.show', compact('famous','user'));
+        return view('famous.show', compact('famous','user', 'statistics', 'services', 'services_2'));
 
     }
 
@@ -50,7 +56,7 @@ class FamousController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(famous $famous)
+    public function create()
     {
         return view('famous.create');
     }
@@ -63,9 +69,11 @@ class FamousController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $user= Auth::user();
         $user->famous()->create($request->all());
-        return back();
+        // return back();
+        return view('famous.ststic');
     }
 
     /**
@@ -78,12 +86,21 @@ class FamousController extends Controller
     {
         $user = \App\Models\User::find($id);
         $famous_q = DB::table('famouses')->where('user_id',$id)->first();
-        $famous= json_decode( json_encode($famous_q), true);
+        $famous= json_decode(json_encode($famous_q), true);
 
-        if(null == $famous){
-            return view('famous.message');
-        }
-        return view('famous.show', compact('famous', 'user'));
+        $services_q = DB::table('services')->where('user_id',$id)->get();
+        $services= json_decode(json_encode($services_q), true);
+        // dd($services);
+        $services_q = DB::table('services')->where('user_id',$id)->get();
+        $services_2= json_decode(json_encode($services_q), true);
+
+        $statistics_q = DB::table('statistics')->where('user_id',$id)->first();
+        $statistics= json_decode(json_encode($statistics_q), true);
+        // dd($famous);
+        // if(null == $famous){
+        //     return view('famous.message');
+        // }
+        return view('famous.show', compact('famous', 'user', 'services', 'statistics', 'services_2'));
     }
 
     /**

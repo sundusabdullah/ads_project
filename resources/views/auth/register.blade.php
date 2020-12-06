@@ -1,107 +1,59 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container" dir="rtl">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header text-right">{{ __('التسجيل') }}</div>
 
-                <div class="card-body" >
-                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('الإسم') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('البريد الإلكتروني') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('الرقم السري') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('تأكيد الرقم السري') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-                        
-                        <!-- avatar -->
-                        <div class="form-group row">
-                            <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('الصورة الشخصية') }}</label>
-                            <div class="col-md-6">
-                                <input id="avatar" type="file" class="form-control" name="avatar">
-                            </div>
-                        </div>
-
-                        <!-- account type -->
-                        <div class="form-group row" >
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('نوع الحساب') }}</label>
-
-                            <label class="radio-inline">
-                                <input type="radio" name="account_type"  value="person" checked> {{ __('فرد معلن') }}
-                            </label>
-
-                            <label class="radio-inline">
-                                <input type="radio" name="account_type" value="company"> {{ __('شركة معلنة') }}
-                            </label>
-
-                            <label class="radio-inline">
-                                <input type="radio" name="account_type"  value="orgonizer"> {{ __('منسق معلن') }}
-                            </label>
-
-                            <label class="radio-inline">
-                                <input type="radio" name="account_type" value="famous"> {{ __('معلن') }}
-                            </label>
-                        </div>
-                      
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('تسجيل') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+<body style="direction: rtl; background-image: url({{url('/img/bg.png')}});">
+    <div class="login-dark">
+        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+        @csrf
+            <a class="d-xl-flex justify-content-xl-center" href="" style="margin: 22px;color: #eef4f7;font-size: 49px;">اوزون</a>
+            <div class="illustration"></div>
+            <p style="text-align: center;font-family: Cairo, sans-serif;font-weight: bold;">{{ __('التسجيل') }}</p>
+            <div class="form-group">
+                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"  placeholder="اسم المستخدم"
+                    name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>                
+                    @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
             </div>
-        </div>
+            <div class="form-group">
+                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"  placeholder="البريد الإلكتروني" name="email" value="{{ old('email') }}" required autocomplete="email">            
+                @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            <div class="form-group">
+                <input class="form-control @error('password') is-invalid @enderror" type="password" name="password" placeholder="كلمة المرور" required>
+                @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+                <div class="invalid-feedback"></div>
+            </div>
+            <div class="form-group">
+                <input id="password-confirm" placeholder="تأكيد كلمة المرور" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                <div class="invalid-feedback"></div>
+            </div>
+            <div class="form-group">
+                <label for="avatar" class="form-group">{{ __('الصورة الشخصية') }}</label>
+                    <div class="col-md-6">
+                        <input id="avatar" type="file" class="form-control" name="avatar">
+                    </div>
+            </div>
+            <div class="form-group" style="height: 76px;">
+                <p>{{ __('نوع الحساب') }}</p>
+                <div><input type="radio" name="account_type" value="company" required><label for="company">{{ __('شركة معلنة') }}</label></div>
+                <div><input type="radio" name="account_type" value="person" required checked><label for="person">{{ __('فرد معلن') }}</label></div>
+                <div><input type="radio" name="account_type" value="orgonizer" required><label for="orgonizer">{{ __('منسق معلن') }}</label></div>
+            </div>
+            <div class="form-group" style="margin-bottom: 0px;text-align: center;padding-top: 30px;padding-bottom: 8px;"><a href="#" style="font-family: Cairo, sans-serif;font-size: 10px;color: #807b7b;"><br>بالضفط على "تسجيل " انت توافق على&nbsp;الشروط و الأحكام.<br></a></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">تسجيل</button></div>
+        </form>
     </div>
-</div>
+
 @endsection

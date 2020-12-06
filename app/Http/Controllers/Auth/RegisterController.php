@@ -34,15 +34,16 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    // protected $redirectTo = '/home';
+    // protected $redirectTo = '/login';
 
     public function register(Request $request)
     {      
         $this->validator($request->all())->validate();
 
         event(new Registered($user = $this->create($request->all())));
+        return redirect()->to('login');
 
-        return redirect($this->redirectPath())->with('', '');
+        // return redirect($this->redirectPath())->with('', '');
     }
     // protected function redirectTo()
     // {

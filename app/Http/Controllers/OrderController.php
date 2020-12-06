@@ -22,7 +22,7 @@ class OrderController extends Controller
         $service = new Service();
 
         $total = 0;
-        return view('cart.checkout', compact('cartItems', 'total', 'service'));
+        return view('cart.paypal', compact('cartItems', 'total', 'service'));
     }
 
     /**

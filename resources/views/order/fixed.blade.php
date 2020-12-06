@@ -2,63 +2,68 @@
 @section('content')
 @section('title', 'طلب خدمة')
 
-<div class="container" dir="rtl">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header text-right">{{ __('نموذج طلب خدمة') }}</div>
+<body>
 
-                <div class="card-body">
-                    <form  action="{{ route('fixed.store',$request->id) }}" method="post" class="form">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="place" class="col-md-4 col-form-label text-md-right">{{ __('مكان الإعلان') }}</label>
-                            <div class="col-md-6">
-                                <input id="place" type="text" class="form-control" name="place" required >
+    <nav class="navbar navbar-light navbar-expand" id="brandNav">
+        <div class="container"><a class="navbar-brand mx-auto" id="brand" href="{{ route('home') }}" style="font-size: 36px;font-weight: bold;color: rgb(56,212,242);">اوزون</a><button class="navbar-toggler navbar-toggler-right text-white rounded" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button></div>
+    </nav>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#"><span class="text-white">الرئيسية</span></a></li>
+        <li class="breadcrumb-item"><a href="#"><span class="text-white">اسم</span></a></li>
+    </ol>
+    <div class="row d-flex flex-wrap">
+        <div class="col">
+            <div id="wrapper" class="pr-2 pl-2">
+                <div class="d-flex flex-column" id="content-wrapper">
+                    <div id="content">
+                        <div class="container-fluid mb-5">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card shadow mb-4" style="text-align: right;">
+                                        <div class="card-header py-3">
+                                            <h5 class="m-0 font-weight-bold">نموذج طلب اعلان</h5>
+                                        </div>
+                                        <form  action="{{ route('fixed.store',$request->id) }}" method="post" class="form">
+                                            @csrf
+                                        <div class="card-body">
+                                            <div class="form-group" style="margin-top: 15px;margin-right: 50px;margin-left: 50px;">
+                                                <div><label for="snapnum" style="text-align: right;"><strong>اسم الخدمة</strong></label>
+                                                    <div style="padding-bottom: 22px;">
+                                                        <input type="text" name="service_name" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div><label for="snapnum" style="text-align: right;"><strong>مكان الاعلان</strong></label>
+                                                    <div style="padding-bottom: 22px;"><input type="text" name="place" class="form-control"></div>
+                                                </div>
+                                                <div style="padding-bottom: 22px;"><label for="snapnum" style="text-align: right;"><strong>المبلغ المقترح</strong></label>
+                                                    <div style="padding-bottom: 12px;"><input type="text" name="price" class="form-control"></div>
+                                                </div>
+                                                <div style="padding-bottom: 22px;"><label for="snapnum" style="text-align: right;"><strong>تاريخ الاعلان</strong></label>
+                                                    <div style="padding-bottom: 12px;"><input type="date"  name="date" class="form-control"></div>
+                                                </div>
+                                                <div style="padding-bottom: 22px;"><label for="snapnum" style="text-align: right;"><strong>الوقت</strong><br></label>
+                                                    <div style="padding-bottom: 12px;"><input type="time" name="time" class="form-control"></div>
+                                                </div><label for="snapnum" style="text-align: right;"><strong>ملاحظات اخرى</strong><br></label><textarea name="notes" style="text-align: right;display: block;width: 100%;height: calc(6.5em + .75rem + 2px);padding: .375rem .75rem;font-size: 1rem;font-weight: 400;line-height: 1.5;color: #6e707e;background-color: #fff;background-clip: padding-box;border: 1px solid #d1d3e2;border-radius: .35rem;transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;margin-bottom: 14px;"></textarea>
+                                                <div
+                                                    class="row">
+                                                    <div class="col">
+                                                        <div class="form-group" style="width: 120px;margin-bottom: 6px;"><button class="btn btn-sm btnprofil" type="submit">ارسل الطلب</button></div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-
-                        <div class="form-group row">
-                            <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('المبلغ المقترح') }}</label>
-                            <div class="col-md-6">
-                                <input id="price" type="text" class="form-control" name="price" required >
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="date" class="col-md-4 col-form-label text-md-right">{{ __('تاريخ الإعلان') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="date" type="date" class="form-control" name="date"  required>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="time" class="col-md-4 col-form-label text-md-right">{{ __('الوقت') }}</label>
-                            <div class="col-md-6">
-                                <input id="time" type="time" class="form-control" name="time" required >
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="notes" class="col-md-4 col-form-label text-md-right">{{ __('ملاحظات آخرى') }}</label>
-                            <div class="col-md-6">
-                                <textarea id="notes" type="text" class="form-control" name="notes"></textarea>
-                            </div>
-                        </div>
-
-
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <button type="submit" class="btn btn-success">{{__('إرسال الطلب')}}</button>
-                            </div> 
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    </div>
+@endsection
+@section('footer')
+    @include('footer')
 @endsection

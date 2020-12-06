@@ -49,7 +49,6 @@ class ProfileController extends Controller
     {
         $user= Auth::user();
         return view('user/company.edit', compact('user'));
-
     }
 
     /**

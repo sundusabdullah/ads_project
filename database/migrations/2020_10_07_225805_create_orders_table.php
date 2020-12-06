@@ -19,7 +19,6 @@ class CreateOrdersTable extends Migration
             $table->string('user_name');
             
             $table->string('service_name');
-
             $table->string('famouses_name');
             $table->foreign('famouses_name')
                 ->references('name')
@@ -31,7 +30,6 @@ class CreateOrdersTable extends Migration
                     ->on('famouses');
             
             $table->enum('sataus', ['pending', 'processing', 'completed', 'decline'])->default('pending');
-
             $table->float('grand_total');
 
             $table->boolean('is_paid')->default(false);

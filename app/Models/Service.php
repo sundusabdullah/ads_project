@@ -9,7 +9,7 @@ class Service extends Model
 {
     use HasFactory;
     protected $table = 'services';
-    protected $fillable = ['user_id', 'services_name' , 'services_price', 'services_type'];
+    protected $fillable = ['services_instagram_name', 'services_instagram_price', 'services_snapchat_name', 'services_snapchat_price'];
 
     public function user(){
         return $this->belongsTo('App\Models\User');
