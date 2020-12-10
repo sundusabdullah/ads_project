@@ -92,12 +92,17 @@
            
                                     @if(Auth()->user()->account_type == 'person' or Auth()->user()->account_type == 'company')
                                         <a class="dropdown-item" href="{{ route('profile.index') }}">
-                                            الصفحة الشخصيه 
+                                            {{ __('الملف الشخصي') }} 
                                         </a>
                                     @endif
                                     @if(Auth()->user()->account_type == 'famous' or Auth()->user()->account_type == 'orgonizer')
                                         <a class="dropdown-item" href="{{ route('famous.index') }}">
-                                            الصفحة الشخصيه 
+                                            {{ __('الملف الشخصي') }}
+                                        </a>
+                                    @endif
+                                    @if(Auth()->user()->account_type == 'famous' or Auth()->user()->account_type == 'orgonizer')
+                                        <a class="dropdown-item" href="{{route('famous.edit', Auth()->user()->id)}}">
+                                             {{ __('تعديل الملف الشخصي') }}
                                         </a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"

@@ -127,7 +127,7 @@ class FamousController extends Controller
      */
     public function update(Request $request, famous $famous, $id)
     {
-
+        // dd($request->all());
         $user = Auth::user();
         if(Auth::user()->id == $id){
             if($request->hasfile('avatar')){
@@ -143,14 +143,17 @@ class FamousController extends Controller
         $famous = DB::table('famouses')->where('user_id',$id)->update(
             ['name' => $request->input('name'),
             'brief' => $request->input('brief'),
-            'instagram' => $request->input('instagram'),
-            'instagram_num' => $request->input('instagram_num'),
-            'snap' => $request->input('snap'),
-            'snap_num' => $request->input('snap_num'),
-            'twitter' => $request->input('twitter'),
-            'twitter_num' => $request->input('twitter_num'),
-            'region' => $request->input('region'),
+            'email' => $request->input('email'),
             'vat' => $request->input('vat'),
+            'region' => $request->input('region'),
+            'interests' => $request->input('interests'),
+            'nationality' => $request->input('nationality'),
+            'male_follow' => $request->input('male_follow'),
+            'female_follow' => $request->input('female_follow'),
+            'ins_link' => $request->input('ins_link'),
+            'snap_link' => $request->input('snap_link'),
+            'youtube_link' => $request->input('youtube_link'),
+            'twitter_link' => $request->input('twitter_link')
             ]);
 
         return back();

@@ -144,6 +144,7 @@
                                 <div class="col col-lg-6 sex"><i class="fa fa-male d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center fa-2x"></i><input type="text" class="col-12 form-control" placeholder="50%" name="male_follow"></div>
                             </div>
                         <div class="form-group"><button class="btn btn-sm btnprofil" type="submit">حفظ</button></div>
+                        <!-- <div class="form-group"><button class="btn btn-sm btnprofil" type="submit">تحديث</button></div> -->
                     </div>
                 </div>
             </div>
