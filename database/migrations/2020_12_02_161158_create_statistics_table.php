@@ -21,15 +21,15 @@ class CreateStatisticsTable extends Migration
             ->on('users')
             ->onDelete('cascade');
             //instagram
-            $table->integer('follow_instagram');//عدد المتابعين في حساب انستجرام
-            $table->integer('age_instagram');//الاعمار الاكثر شعبية
+            $table->string('follow_instagram');//عدد المتابعين في حساب انستجرام
+            $table->string('age_instagram');//الاعمار الاكثر شعبية
             $table->string('spreading_instagram');//الانشار الاقليمي
             $table->integer('percentage_instagram');//النسبة
 
             //snapchat
-            $table->integer('min_snapchat');//عدد دقائق المشاهدات في حساب سناب شات
-            $table->integer('age_snapchat');//الاعمار الاكثر شعبية
-            $table->integer('story_snapchat');//عدد مشاهدات القصة في حساب سناب شات
+            $table->string('min_snapchat');//عدد دقائق المشاهدات في حساب سناب شات
+            $table->string('age_snapchat');//الاعمار الاكثر شعبية
+            $table->string('story_snapchat');//عدد مشاهدات القصة في حساب سناب شات
             $table->string('day_snapchat');//المشاهدات خلال ايام الاسبوع
             $table->string('follow_snapchat');//العدد
 

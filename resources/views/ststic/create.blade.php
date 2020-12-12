@@ -65,7 +65,7 @@
                             <div class="col col-lg-6 col-xl-6 col-12" style="text-align: right;">
                                 <div class="form-group" style="text-align: right;">
                                 <label for="price2"><strong>النسبة</strong><br></label>
-                                <input class="form-control" name="percentage_instagram" type="text" placeholder="50%"></div>
+                                <input class="form-control" name="percentage_instagram" type="text" placeholder="50"></div>
                             </div>
                         </div>
                 </div>
@@ -100,7 +100,7 @@
                                 <div class="form-group" style="text-align: right;"><label for="price2"><strong>المشاهدات خلال ايام الاسبوع</strong><br></label><input class="form-control" name="day_snapchat" type="text" placeholder="الاحد"><sub>عدد المشاهدات في جميع ايام الاسبوع.</sub></div>
                             </div>
                             <div class="col col-lg-6 col-xl-6 col-12" style="text-align: right;">
-                                <div class="form-group" style="text-align: right;"><label for="price2"><strong>العدد</strong><br></label><input class="form-control" name="follow_snapchat" type="number" placeholder="1.2m"></div>
+                                <div class="form-group" style="text-align: right;"><label for="price2"><strong>العدد</strong><br></label><input class="form-control" name="follow_snapchat" type="number" placeholder="10000"></div>
                             </div>
                         </div>
                         <div class="form-row">

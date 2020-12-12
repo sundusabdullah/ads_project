@@ -55,7 +55,8 @@
                                         <div class="form-row">
                                             <div class="col col-lg-6 col-xl-6 col-12">
                                                 <div class="form-group"><label for="numtax"><strong>{{__('الرقم الضريبي')}}</strong></label>
-                                                    <input type="text" name="vat" class="form-control" required>                                                </div>
+                                                    <input type="text" name="vat" class="form-control" required>                                                
+                                                </div>
                                                 </div>
                                             <div class="col col-lg-6 col-xl-6 col-12">
                                                 <div class="form-group"><label for="nationality"><strong>{{__('الجنسية')}}</strong></label>
