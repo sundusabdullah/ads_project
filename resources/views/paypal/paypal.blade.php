@@ -25,7 +25,7 @@
                                             <h5 class="m-0 font-weight-bold">الدفع</h5>
                                         </div>
                                         <form accept-charset="UTF-8" action="https://api.moyasar.com/v1/payments.html" method="POST">                                            <input type="hidden" name="callback_url" value="https://www.google.com" /> <!-- what will appear on the page after successful payment -->
-                                            <input type="hidden" name="publishable_api_key" value="pk_test_J5NyKBhwCpTLpZAs9N6sy7V7K9cjgqrTRLgrWXsB" />
+                                            <input type="hidden" name="publishable_api_key" value="YOUR_API_KEY" />
 
                                             <!-- <input type="hidden" name="amount" value="200" />  -->
                                             <!-- you can make this type="number" and let the user enter the amount -->
@@ -46,20 +46,24 @@
               </div>
               <div class="col-md-3 mb-3">
                 <label for="cc-expiration">رقم البطاقة</label>
+                <!-- 4242424242424242 -->
                 <input type="text" class="form-control" name="source[number]" id="cc-expiration" placeholder="" required="">
               </div>
             </div>
             <div class="row">
               <div class="col-md-3 mb-3">
                 <label for="cc-expiration">السنة</label>
+                <!-- More than 2022 -->
                 <input type="text" class="form-control"  name="source[year]" id="cc-expiration" placeholder="" required="">
               </div>
               <div class="col-md-3 mb-3">
                 <label for="cc-expiration">الشهر</label>
+                <!-- Between 1 and 12 --> 
                 <input type="text" class="form-control" name="source[month]" id="cc-cvv" placeholder="" required="">
               </div>
               <div class="col-md-3 mb-3">
                 <label for="cc-expiration">CVV</label>
+                <!-- Any 3 numbers -->
                 <input type="text" class="form-control" name="source[cvc]" id="cc-cvv" placeholder="" required="">
               </div>
             </div>

@@ -59,6 +59,7 @@ class StatisticsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Statistics  $statistics
+     * @param $id
      * @return \Illuminate\Http\Response
      */
     public function edit(Statistics $statistics, $id)
@@ -76,6 +77,7 @@ class StatisticsController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Statistics  $statistics
+     * @param $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Statistics $statistics, $id)

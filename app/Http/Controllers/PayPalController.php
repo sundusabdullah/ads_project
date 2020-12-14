@@ -45,6 +45,8 @@ class PayPalController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Payment  $payment
+     * @param  \Illuminate\Http\Request  $request
+     * @param $id
      * @return \Illuminate\Http\Response
      */
     public function show(Payment $payment, Request $request, $id)

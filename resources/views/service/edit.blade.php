@@ -2,7 +2,6 @@
 @section('content')
 @section('title', 'تعديل خدمة')
 
-
 <body>
     <nav class="navbar navbar-light navbar-expand" id="brandNav">
         <div class="container"><a class="navbar-brand mx-auto" id="brand" href="{{ route('home') }}" style="font-size: 36px;font-weight: bold;color: rgb(56,212,242);">اوزون</a><button class="navbar-toggler navbar-toggler-right text-white rounded" data-toggle="collapse" data-target="#navbarResponsive"
@@ -64,11 +63,10 @@
                             <div class="col">
                                 <button class="btn btn-sm d-block btnprofil" type="submit">حفظ</button>
                             </div>
-                        </div>    
+                        </div>           
+                    </div>
                 </div>
-                </div>
-</form>
-         
+            </form>
         </div>
     </div>
 @endsection

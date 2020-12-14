@@ -27,7 +27,10 @@ class NegotiationController extends Controller
 
         return view('order.negotiate',compact('to','user_id','fixed','negotiations'));
     }
-
+    /**
+     * Store newly record
+     * Send notification to the email when receiving a new message
+     */
     public function store(Request $request) 
     {
         $negotiation_record = new Negotiation($request->all());
@@ -49,23 +52,4 @@ class NegotiationController extends Controller
         
         return redirect()->back();
     }
-
-
-    // public function edit(Negotiation $negotiation)
-    // {
-    //     return view('order.edit');
-    // }
-
-    // /**
-    //  * Update the specified resource in storage.
-    //  *
-    //  * @param  \Illuminate\Http\Request  $request
-    //  * @param  \App\Models\Order  $order
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function update(Request $request, Negotiation $negotiation)
-    // {
-    //     //
-    // }
-
 }

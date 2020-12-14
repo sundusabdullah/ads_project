@@ -62,7 +62,6 @@ class AdminController extends Controller
         // $user = \App\Models\User::find($id);
         // $user_q = DB::table('users')->where('id',$id)->first();
         // $user = json_decode( json_encode($user_q), true);
-        
         // return view('admin.edit', compact('user'));
 
     }
@@ -84,7 +83,7 @@ class AdminController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return string $message
      */
     public function destroy($id)
     {

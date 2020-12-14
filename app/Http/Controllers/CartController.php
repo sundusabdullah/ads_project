@@ -12,6 +12,12 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+     /**
+     * Add service details.
+     * 
+     * @param  int  $service
+     * @return view
+     */
     public function add(Service $service){
         // dd($service);
         if($service->services_instagram_price != null){
@@ -37,13 +43,19 @@ class CartController extends Controller
             return redirect()->route('cart.index'); 
         }else{}
     }
-
+/**
+ * Index item in user cart and total of cost
+ */
     public function index(){
 
         $cartItems = Cart::session(auth()->id())->getContent();
         $total = 0;
         return view('cart.index', compact('cartItems', 'total'));
     }
+    /**
+     * Destroy item from cart.
+     * @param $itemId
+     */
 
     public function destroy($itemId){
 
@@ -55,7 +67,9 @@ class CartController extends Controller
         return view('cart.checkout', compact('service'));
     }
 
-
+/**
+ * Display all Negotiation in user profile
+ */
     public function index_noti(){
 
         $id = Auth::user()->id;

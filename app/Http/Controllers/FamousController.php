@@ -73,13 +73,13 @@ class FamousController extends Controller
         $user= Auth::user();
         $user->famous()->create($request->all());
         // return back();
-        return view('famous.ststic');
+        return view('ststic.create');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\famous  $famous
+     * @param  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -106,7 +106,8 @@ class FamousController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\famous  $famous
+     * @param  \App\Models\famous  $famous 
+     * @param $id
      * @return \Illuminate\Http\Response
      */
     public function edit(famous $famous, $id)
@@ -123,6 +124,7 @@ class FamousController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\famous  $famous
+     * @param $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, famous $famous, $id)

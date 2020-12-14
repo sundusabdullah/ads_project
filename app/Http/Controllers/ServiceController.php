@@ -28,7 +28,7 @@ class ServiceController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
+     *@param $service
      * @return \Illuminate\Http\Response
      */
     public function create(Service $service)
@@ -64,26 +64,27 @@ class ServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Service  $service
+     * @param  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        // $user = \App\Models\User::find($id);
-        // $services_q = DB::table('services')->where('user_id',$id)->get();
-        // $services = json_decode( json_encode($services_q), true);
+        $user = \App\Models\User::find($id);
+
+        $services_q = DB::table('services')->where('user_id',$id)->get();
+        $services = json_decode( json_encode($services_q), true);
         // dd($services);
-        // $services_q = DB::table('services')->where('user_id',$id)->get();
-        // $services_2= json_decode(json_encode($services_q), true);
+        $services_q = DB::table('services')->where('user_id',$id)->get();
+        $services_2= json_decode(json_encode($services_q), true);
         // // dd($services_2);
-        // return view('service.edit', compact('services', 'user')); 
+        return view('service.edit', compact('services', 'user', 'services_2')); 
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Service  $service
+     * @param  @id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -91,11 +92,11 @@ class ServiceController extends Controller
         // dd($request->all());
         // $service = DB::table('services')->where('user_id',$id)->update(
         //     ['services_instagram_name' => $request->input('services_instagram_name'),
-        //     'services_instagram_price' => $request->input('services_instagram_price'),
+        //     'services_instagram_price' => $request->input('services_instagram_price')
         //     'services_snapchat_name' => $request->input('services_snapchat_name'),
         //     'services_snapchat_price' => $request->input('services_snapchat_price')
             // ]);
-        return back();
+        // return back();
     }
 
     /**

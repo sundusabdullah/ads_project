@@ -19,7 +19,7 @@
                 <ul class="nav navbar-nav text-right pr-0" id="accordionSidebar">
                     <li class="nav-item d-block"><a class="nav-link active" href="{{route('famous.edit', $user)}}"><span class="mr-4 navitem">الملف الشخصي</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('statistics.edit', $user)}}"><span class="mr-4 navitem">احصائيات</span></a></li>
-                    <li class="nav-item"><a class="nav-link"  href="{{route('service.edit', $user)}}"><span class="mr-4 navitem">الخدمات</span></a></li>
+                    <li class="nav-item"><a class="nav-link"  href=""><span class="mr-4 navitem">الخدمات</span></a></li>
                 </ul>
             </div>
         </nav>

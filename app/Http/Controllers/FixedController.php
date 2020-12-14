@@ -34,7 +34,7 @@ class FixedController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
+     * Store details of service and  Negotiation
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -88,6 +88,7 @@ class FixedController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Fixed  $fixed
+     * @param $id
      * @return \Illuminate\Http\Response
      */
     public function edit(Fixed $fixed, $id)
@@ -103,6 +104,7 @@ class FixedController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Fixed  $fixed
+     * @param $id
      * @return \Illuminate\Http\Response
      */
     public function update(Fixed $fixed, Request $request, $id)

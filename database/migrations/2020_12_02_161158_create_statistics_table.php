@@ -24,7 +24,7 @@ class CreateStatisticsTable extends Migration
             $table->string('follow_instagram');//عدد المتابعين في حساب انستجرام
             $table->string('age_instagram');//الاعمار الاكثر شعبية
             $table->string('spreading_instagram');//الانشار الاقليمي
-            $table->integer('percentage_instagram');//النسبة
+            $table->string('percentage_instagram');//النسبة
 
             //snapchat
             $table->string('min_snapchat');//عدد دقائق المشاهدات في حساب سناب شات
